@@ -22,7 +22,7 @@ app = Flask(__name__)
 
 
 @app.route('/')
-def hello():
+def hello(name=None):
     """Return a friendly HTTP greeting."""
     return render_template("test.html", name=name)
 
