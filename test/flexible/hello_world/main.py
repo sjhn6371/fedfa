@@ -7,35 +7,56 @@ from flask import Flask, render_template, url_for, request
 app = Flask(__name__)
 
 
+class calculator:
+
+    def __init__(self):
+        self.ac=''
+
+    def processing(self, num1, num2, ope):
+        k = ope
+        equ = '='
+        if k == 'add':
+            result = float(num1) + float(num2)
+            if result - int(result)==0:
+                result = int(result)
+            k = '+'
+
+        elif k == 'sub':
+            result = float(num1) - float(num2)
+            if result - int(result)==0:
+                result = int(result)
+            k = '-'
+
+        elif k == 'multi':
+            result = float(num1) * float(num2)
+            if result - int(result)==0:
+                result = int(result)
+            k = '×'
+
+        elif k == 'div':
+            result = float(num1) / float(num2)
+            if result - int(result)==0:
+                result = int(result)
+            k = '÷'
+        else:
+            return 'Error. Check your operation'
+
+        self.ac = str(num1) + k + str(num2) + ' ' + equ + ' ' + str(result)
+
+        return self.ac
+
+
 @app.route('/')
 def hello(name=None):
     """Return a friendly HTTP greeting."""
     return render_template("test.html", name=name)
 
+
 @app.route('/')
 @app.route('/calc/<num1>&<num2>&<ope>')
 def calc(num1,num2,ope):
-    a = int(num1)
-    b = int(num2)
-    if ope =='add':
-        c = a + b
-        ope = '+'
-        c = str(c)
-    if ope =='sub':
-        c = a - b
-        ope = '-'
-        c = str(c)
-    if ope =='multi':
-        c = a * b
-        ope = '×'
-        c = str(c)
-    if ope =='div':
-        c = a / b
-        ope = '÷'
-        c = str(c)
-    return render_template('test_2.html', num1=num1, num2=num2, ope=ope, out = c)
-
-
+    ca1 = calculator()
+    return render_template('test_2.html', out = ca1.processing(num1, num2, ope))
 
 
 @app.errorhandler(500)
