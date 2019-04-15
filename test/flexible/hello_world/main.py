@@ -1,7 +1,6 @@
 import logging
 import os
 
-import webapp2
 
 from google.appengine.api import app_identity
 
