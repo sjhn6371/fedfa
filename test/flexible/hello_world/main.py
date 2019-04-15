@@ -95,10 +95,12 @@ def calc(num1,num2,ope):
     ca1 = calculator()
     return render_template('test_2.html', out = ca1.processing(num1, num2, ope))
 
+@app.route('/')
 @app.route('/upload2')
 def index():
     return render_template('upload2.html')
 
+@app.route('/')  
 @app.route('/upload', methods=['POST'])
 def upload():
     """Process the uploaded file and upload it to Google Cloud Storage."""
