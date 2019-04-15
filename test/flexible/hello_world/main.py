@@ -7,7 +7,7 @@ import os
 from flask import Flask, render_template, url_for, request
 from google.cloud import storage
 
-
+CLOUD_STORAGE_BUCKET = os.environ['CLOUD_STORAGE_BUCKET']
 app = Flask(__name__)
 
 def get(self):
