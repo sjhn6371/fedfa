@@ -113,7 +113,7 @@ def upload():
     gcs = storage.Client()
 
     # Get the bucket that the file will be uploaded to.
-    bucket = gcs.get_bucket(CLOUD_STORAGE_BUCKET)
+    bucket = gcs.get_bucket(mytestbucket0404)
 
     # Create a new blob and upload the file's content.
     blob = bucket.blob(uploaded_file.filename)
