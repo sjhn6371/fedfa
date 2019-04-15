@@ -2,7 +2,7 @@ import logging
 import os
 
 
-from google.appengine.api import app_identity
+
 
 from flask import Flask, render_template, url_for, request
 from google.cloud import storage
