@@ -95,7 +95,18 @@ def calc(num1,num2,ope):
     ca1 = calculator()
     return render_template('test_2.html', out = ca1.processing(num1, num2, ope))
 
+ 
+@app.route('/upload2')
+def fileupload(num = None):
+    return render_template('upload2.html', num = num)
 
+@app.route('/showupload',methods=['POST'])
+def showtext(num=None):
+    if request.method == 'POST':
+        temp = request.form['num']
+    return redirect(url_for('fileupload', num = temp))
+  
+  
 @app.errorhandler(500)
 def server_error(e):
     logging.exception('An error occurred during a request.')
